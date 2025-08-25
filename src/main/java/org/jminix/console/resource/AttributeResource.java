@@ -81,10 +81,10 @@ public class AttributeResource extends AbstractTemplateResource {
 
       model.put(ATTRIBUTE_MODEL_ATTRIBUTE, info);
 
-      if ((value instanceof CompositeData) && getAttribute("item") != null) {
+      if ((value instanceof CompositeData data) && getAttribute("item") != null) {
         String item = getDecodedAttribute("item");
         log.debug("Reading key " + item + " from " + value);
-        value = ((CompositeData) value).get(item);
+        value = data.get(item);
       }
 
       if (value != null) {

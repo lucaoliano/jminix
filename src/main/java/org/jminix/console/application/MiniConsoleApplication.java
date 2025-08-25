@@ -22,6 +22,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jminix.console.resource.AttributeResource;
 import org.jminix.console.resource.AttributesResource;
 import org.jminix.console.resource.DomainResource;
@@ -194,9 +196,9 @@ public class MiniConsoleApplication extends Application {
 
   protected static void configureLog(Context context) {
     if (!"true".equals(System.getProperty("common.jmx.show.restlet.log"))) {
-      java.util.logging.Logger.getLogger("org.restlet").setLevel(java.util.logging.Level.SEVERE);
+      Logger.getLogger("org.restlet").setLevel(Level.SEVERE);
       if (context != null) {
-        context.getLogger().setLevel(java.util.logging.Level.SEVERE);
+        context.getLogger().setLevel(Level.SEVERE);
       }
     }
   }

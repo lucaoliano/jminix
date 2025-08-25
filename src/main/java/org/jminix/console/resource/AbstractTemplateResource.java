@@ -92,8 +92,8 @@ public abstract class AbstractTemplateResource extends ServerResource {
 
   @Override
   public Representation toRepresentation(Object source, Variant variant) {
-    if (source instanceof Representation) {
-      return (Representation) source;
+    if (source instanceof Representation representation) {
+      return representation;
     }
     if (source == null) {
       return new EmptyRepresentation();
@@ -111,9 +111,9 @@ public abstract class AbstractTemplateResource extends ServerResource {
       String templateName = getTemplateName();
       Object resultObject = enrichedModel.get(VALUE_MODEL_ATTRIBUTE);
 
-      if (resultObject instanceof InputStreamContent) {
+      if (resultObject instanceof InputStreamContent content) {
         return new InputRepresentation(
-            (InputStreamContent) resultObject, MediaType.APPLICATION_OCTET_STREAM);
+            content, MediaType.APPLICATION_OCTET_STREAM);
       }
 
       if (resultObject instanceof HtmlContent) {
@@ -199,10 +199,10 @@ public abstract class AbstractTemplateResource extends ServerResource {
 
           HashMap<String, String> ref = new HashMap<>();
 
-          if (item instanceof MBeanAttributeInfo) {
-            ref.put("$ref", encoder.encode(escape(((MBeanAttributeInfo) item).getName())) + "/");
-          } else if (item instanceof Map && ((Map) item).containsKey("declaration")) {
-            ref.put("$ref", ((Map) item).get("declaration").toString());
+          if (item instanceof MBeanAttributeInfo info) {
+            ref.put("$ref", encoder.encode(escape(info.getName())) + "/");
+          } else if (item instanceof Map map && map.containsKey("declaration")) {
+            ref.put("$ref", map.get("declaration").toString());
           } else {
             ref.put("$ref", encoder.encode(escape(item.toString())) + "/");
           }

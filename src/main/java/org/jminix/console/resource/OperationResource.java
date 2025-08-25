@@ -115,9 +115,9 @@ public class OperationResource extends AbstractTemplateResource {
               MediaType.APPLICATION_JSON,
               Language.ALL,
               CharacterSet.UTF_8);
-        } else if (result instanceof InputStreamContent) {
+        } else if (result instanceof InputStreamContent content) {
           return new InputRepresentation(
-              (InputStreamContent) result, MediaType.APPLICATION_OCTET_STREAM);
+              content, MediaType.APPLICATION_OCTET_STREAM);
         } else {
           return new StringRepresentation(
               result.toString(),

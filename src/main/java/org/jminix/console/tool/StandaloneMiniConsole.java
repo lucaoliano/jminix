@@ -77,7 +77,7 @@ public class StandaloneMiniConsole {
   public static void main(String[] args) {
     int port = 8181;
     if (args.length > 0) {
-      port = new Integer(args[0]);
+      port = Integer.valueOf(args[0]);
     }
     new StandaloneMiniConsole(port);
   }

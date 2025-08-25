@@ -33,8 +33,7 @@ public class SimpleJMXAuthenticator implements JMXAuthenticator, CredentialsHold
   @Override
   public Subject authenticate(Object credentials) {
     Subject subject = null;
-    if (credentials instanceof String[]) {
-      String[] stringCredentials = (String[]) credentials;
+    if (credentials instanceof String[] stringCredentials) {
       if (stringCredentials.length == 2
           && username.equals(stringCredentials[0])
           && password.equals(stringCredentials[1])) {

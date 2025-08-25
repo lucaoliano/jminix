@@ -17,7 +17,8 @@
 
 package org.jminix.console.servlet;
 
-import javax.servlet.ServletException;
+import java.io.Serial;
+
 import org.jminix.console.application.MiniConsoleApplication;
 import org.restlet.Application;
 import org.restlet.Context;
@@ -26,6 +27,8 @@ import org.restlet.engine.util.ChildContext;
 import org.restlet.ext.servlet.ServerServlet;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import jakarta.servlet.ServletException;
 
 /**
  * MiniConsole servlet getting the MiniConsoleApplication from the Spring WebApplicationContext.
@@ -38,6 +41,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * @since 0.9
  */
 public class SpringMiniConsoleServlet extends ServerServlet {
+  @Serial
   private static final long serialVersionUID = 1L;
 
   transient MiniConsoleApplication app;

@@ -17,7 +17,8 @@
 
 package org.jminix.console.servlet;
 
-import javax.servlet.ServletException;
+import java.io.Serial;
+import jakarta.servlet.ServletException;
 import org.jminix.console.application.MiniConsoleApplication;
 import org.jminix.console.resource.ValueParser;
 import org.jminix.exception.JMinixRuntimeException;
@@ -30,6 +31,7 @@ import org.restlet.engine.util.ChildContext;
 import org.restlet.ext.servlet.ServerServlet;
 
 public class MiniConsoleServlet extends ServerServlet {
+  @Serial
   private static final long serialVersionUID = 1L;
 
   transient MiniConsoleApplication app;

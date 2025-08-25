@@ -166,9 +166,9 @@ public abstract class ClusterManager extends ReceiverAdapter {
   public void receive(Message message) {
     // A new node appeared
     Object o = decrypt(message.getBuffer());
-    if (o instanceof Node) {
+    if (o instanceof Node node) {
       log.debug("Received node " + o);
-      nodes.put(message.getSrc(), (Node) o);
+      nodes.put(message.getSrc(), node);
       updateProvider();
     }
   }

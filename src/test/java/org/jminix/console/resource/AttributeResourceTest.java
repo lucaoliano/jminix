@@ -1,6 +1,6 @@
 package org.jminix.console.resource;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.lang.management.ManagementFactory;
 import java.util.Map;
@@ -9,9 +9,9 @@ import javax.management.ObjectName;
 import org.jminix.console.JMiniXStuff;
 import org.jminix.server.DefaultLocalServerConnectionProvider;
 import org.jminix.type.AttributeFilter;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.Response;
@@ -21,14 +21,14 @@ public class AttributeResourceTest {
   private MBeanServer mbs;
   private ObjectName mbeanName;
 
-  @Before
+  @BeforeEach
   public void setup() throws Exception {
     mbs = ManagementFactory.getPlatformMBeanServer();
     mbeanName = new ObjectName("org.jminix.console:type=JMiniXStuff");
     mbs.registerMBean(new JMiniXStuff(), mbeanName);
   }
 
-  @After
+  @AfterEach
   public void teardown() throws Exception {
     mbs.unregisterMBean(mbeanName);
   }
